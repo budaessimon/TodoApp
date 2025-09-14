@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
+import TodoItem from "./Components/TodoItem";
+import TodoAdder from "./Components/TodoAdder";
 
 function App() {
+
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem("todos");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  } , [todos]);
+
+  const addTodo = (newTodo) => {
+    setTodos([...todos, newTodo]);
+  };
+  const deleteTodo = (indexToDelete) => {
+    setTodos(todos.filter(( _, index) => index !== indexToDelete));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="topBar">
+        <h1 className="header"> To Do App </h1>
+      </div>
+      <ul className="list">
+        {todos.map((todo, index) => (
+          <TodoItem key={index} text={todo} onDelete={() => deleteTodo(index)}/>
+        ))}
+      </ul>
+      <TodoAdder onAdd={addTodo} />
     </div>
   );
 }
-
 export default App;

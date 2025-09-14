@@ -1,0 +1,24 @@
+.todo-item-holder {
+  background-color: rgb(255, 255, 255);
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  border: 10px black;
+}
+.todo-item {
+  background-color: rgb(255, 255, 255);
+  margin-left: 2rem;
+  cursor: pointer;
+}
+.delete-button {
+  width: 1rem;
+  height: auto;
+  position: absolute;
+  right: 1rem;
+  opacity: 0;
+  cursor: pointer;
+}
+.delete-button:hover {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}

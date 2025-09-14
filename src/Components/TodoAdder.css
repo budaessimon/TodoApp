@@ -1,0 +1,23 @@
+.TodoAdder {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 19rem;
+  height: 5rem;
+  border-radius: 15px;
+
+  position: fixed;
+  bottom: 6rem;
+  right: 6rem;
+}
+.submit-btn {
+  background-color: rgb(71, 68, 64);
+  color: aliceblue;
+  margin-left: 0.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.task-input {
+  border-radius: 5px;
+}
